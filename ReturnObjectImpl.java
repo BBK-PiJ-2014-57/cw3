@@ -9,7 +9,14 @@ public class ReturnObjectImpl implements ReturnObject {
 	private boolean err;
 	private Object retObject;
 	
-	//Constructor - taking in the three fields.
+	
+	/**
+	 * Constructor - taking in all three fields.
+	 * 
+	 * @param error whether there is an error
+	 * @param msg enum'd error message
+	 * @param retObj object returned
+	 */
 	public ReturnObjectImpl(boolean error, ErrorMessage msg, Object retObj)
 	{
 		this.err = error;
@@ -17,11 +24,25 @@ public class ReturnObjectImpl implements ReturnObject {
 		this.retObject = retObj;
 	}
 	
+	/**
+	 * Constructor - taking in two fields and working out the err field.
+	 * @param msg Error Message associated with the Object/ Operation
+	 * @param retObj Object to be returned.
+	 */
+	public ReturnObjectImpl(ErrorMessage msg, Object retObj)
+	{
+		this.err = (!msg.equals(ErrorMessage.NO_ERROR));
+		this.errMsg = msg;
+		this.retObject = retObj;
+	}
+	
+	
 	@Override
 	public boolean hasError() {
 		return this.err;
 	}
 
+	
 	@Override
 	public ErrorMessage getError() {
 		if(!this.err)
@@ -30,6 +51,7 @@ public class ReturnObjectImpl implements ReturnObject {
 			return this.errMsg;
 	}
 
+	
 	@Override
 	public Object getReturnValue() {
 		if(this.err)
@@ -37,5 +59,4 @@ public class ReturnObjectImpl implements ReturnObject {
 		else
 			return this.retObject;
 	}
-
 }
