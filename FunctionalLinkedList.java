@@ -1,8 +1,12 @@
-
+/**
+ * Class which implements the FunctionalList Interface using the functions from LinkedList
+ * @author lewispalmer
+ *
+ */
 public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 
 	/**
-	 * {@inheritDoc}
+	 * Creates an empty FunctionalLinkedList by calling the super class.
 	 */
 	public FunctionalLinkedList()
 	{
@@ -10,7 +14,7 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 	}
 	
 	/**
-	 * {@inheritDoc}
+	 * Creates a FunctionalLinkedList with a given Object array by calling the super class.
 	 */
 	public FunctionalLinkedList(Object[] toadd)
 	{
@@ -18,7 +22,7 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 	}
 	
 	/**
-	 * {@inheritDoc}
+	 * Copy constructor for the FunctionalLinkedList class.
 	 */
 	public FunctionalLinkedList(LinkedList copy)
 	{

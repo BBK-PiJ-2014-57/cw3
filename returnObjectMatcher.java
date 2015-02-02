@@ -1,7 +1,11 @@
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
-
-public class returnObjectMatcher extends TypeSafeMatcher<ReturnObjectImpl>{
+/**
+ * hamcrest Matcher to test whether two ReturnObjects are the same.
+ * @author lewispalmer
+ *
+ */
+public class returnObjectMatcher extends TypeSafeMatcher<ReturnObject>{
 	private final ReturnObject expected;
 	
 	public returnObjectMatcher(ReturnObject expected){
@@ -9,7 +13,7 @@ public class returnObjectMatcher extends TypeSafeMatcher<ReturnObjectImpl>{
 	}
 		
 	@Override
-	public boolean matchesSafely(ReturnObjectImpl actual){
+	public boolean matchesSafely(ReturnObject actual){
 		if(actual == expected) return true;
 		if(actual.hasError()!=expected.hasError()) return false;
 		if(actual.getError()!=expected.getError()) return false;

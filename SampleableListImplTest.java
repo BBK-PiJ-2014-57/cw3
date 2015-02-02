@@ -7,6 +7,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+/**
+ * JUnit test class to test the functionality of all the functions from the SampleableList
+ * interface
+ * @author lewispalmer
+ *
+ */
 @RunWith(Parameterized.class)
 public class SampleableListImplTest {
 
@@ -24,7 +30,10 @@ public class SampleableListImplTest {
 		this.expecteddata = expecteddata;
 		this.inputdata = inputdata;
 	}
-	
+	/**
+	 * Builds the test cases
+	 * @return an array of test cases
+	 */
 	@Parameters
 	public static Collection<Object[]> errFuncListdata() {
 		return Arrays.asList(new Object[][] {
@@ -34,6 +43,9 @@ public class SampleableListImplTest {
 		}
 		);}
 	
+	/**
+	 * Re-sets the Lists to prevent changes from the other Tests
+	 */
 	private void InputToList()
 	{
 		this.expectedList = new ArrayList(expecteddata);
@@ -44,6 +56,9 @@ public class SampleableListImplTest {
 		this.sampleablelistinputdata = new SampleableListImpl(inputdata);
 	}
 	
+	/**
+	 * Checks whether the sample() method was implemented correctly when using Array Lists.
+	 */
 	@Test
 	public void testArraySample()
 	{
@@ -52,6 +67,9 @@ public class SampleableListImplTest {
 		assertThat(tocheck.sample(), new listMatcher(this.expectedList));
 	}
 	
+	/**
+	 * Checks whether the sample() method was implemented correctly when using Linked Lists.
+	 */
 	@Test
 	public void testLinkedSample()
 	{
@@ -60,6 +78,10 @@ public class SampleableListImplTest {
 		assertThat(tocheck.sample(), new listMatcher(this.expectedList));
 	}
 	
+	/**
+	 * Checks whether the sample() method was implemented correctly when using 
+	 * FunctionalArray Lists.
+	 */
 	@Test
 	public void testFunctionalArraySample()
 	{
@@ -68,6 +90,10 @@ public class SampleableListImplTest {
 		assertThat(tocheck.sample(), new listMatcher(this.expectedList));
 	}
 	
+	/**
+	 * Checks whether the sample() method was implemented correctly when using 
+	 * FunctionalLinked Lists.
+	 */
 	@Test
 	public void testFunctionalLinkedSample()
 	{
@@ -76,6 +102,9 @@ public class SampleableListImplTest {
 		assertThat(tocheck.sample(), new listMatcher(this.expectedList));
 	}
 	
+	/**
+	 * Checks whether the sample() method was implemented correctly when using SamplebaleLists.
+	 */
 	@Test
 	public void testSampleableListSample()
 	{
@@ -84,6 +113,9 @@ public class SampleableListImplTest {
 		assertThat(tocheck.sample(), new listMatcher(this.expectedList));
 	}
 	
+	/**
+	 * Checks whether the sample() method was implemented correctly when empty Lists.
+	 */
 	@Test
 	public void testEmptyListSampl()
 	{

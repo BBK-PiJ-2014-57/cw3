@@ -1,5 +1,6 @@
 import static org.junit.Assert.assertThat;
 
+
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -7,6 +8,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+/**
+ * JUnit Tests class to test Functional lists by running several different scenarios as
+ * parameters and checking the output of each added FunctionalList function.
+ * Utilises hamcrest Matchers
+ * @author lewispalmer
+ *
+ */
 @RunWith(Parameterized.class)
 public class FunctionalListTest {
 	private ReturnObject expectedhead;
@@ -23,6 +31,12 @@ public class FunctionalListTest {
 		this.input = input;
 	}
 	
+	/**
+	 * Feeds in different FunctionalList scenarios. First of each parameters is whether to 
+	 * test FunctionalLinkedList or FunctionalArrayList, to prevent two separate tests
+	 * sharing similar code
+	 * @return an Array of scenarios to test
+	 */
 	@Parameters
 	public static Collection<Object[]> errFuncListdata() {
 		return Arrays.asList(new Object[][] {
@@ -45,6 +59,9 @@ public class FunctionalListTest {
 		}
 		);}
 	
+	/**
+	 * Resets the lists to prevent any manipulation from previous Tests.
+	 */
 	private void InputToList()
 	{
 		if(this.ArrayList)
@@ -71,12 +88,18 @@ public class FunctionalListTest {
 		}
 	}
 	
+	/**
+	 * Tests the function head() in Interface FunctionalList
+	 */
 	@Test
 	public void headTest(){
 		InputToList();
-		assertThat((ReturnObjectImpl)this.expectedhead, new returnObjectMatcher((ReturnObjectImpl)inputList.head()));
+		assertThat(this.expectedhead, new returnObjectMatcher(inputList.head()));
 	}
 	
+	/**
+	 * Tests the function rest() in Interface FunctionalList
+	 */
 	@Test
 	public void restTest(){
 		InputToList();

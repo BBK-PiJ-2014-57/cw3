@@ -1,5 +1,12 @@
-
+/**
+ * Class which implements the interface SampleableList
+ * @author lewispalmer
+ *
+ */
 public class SampleableListImpl implements SampleableList {
+	/**
+	 * Creates an underlying list to perform functions on.
+	 */
 	private List list;
 	
 	public SampleableListImpl(List list)

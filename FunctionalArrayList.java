@@ -6,7 +6,7 @@
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
 
 	/**
-	 * {@inheritDoc}
+	 * Creates an empty FunctionalArrayList by calling the super class.
 	 */
 	public FunctionalArrayList()
 	{
@@ -14,7 +14,7 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	}
 	
 	/**
-	 * {@inheritDoc}
+	 * Creates a FunctionalArrayList of required size by calling the super class.
 	 */
 	public FunctionalArrayList(int reqsize)
 	{
@@ -22,7 +22,7 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	}
 	
 	/**
-	 * {@inheritDoc}
+	 * Creates a FunctionalArrayList with given Object array by calling the super class.
 	 */
 	public FunctionalArrayList(Object[] toadd)
 	{

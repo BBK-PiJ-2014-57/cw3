@@ -1,4 +1,9 @@
-
+/**
+ * Class to be used across ArrayList and LinkedList to prevent code repetition.
+ * Helps those classes find the relevant error.
+ * @author lewispalmer
+ *
+ */
 public final class FindErrorUtility {
 	/**
 	 * Function finds the appropriate Error message based on the operation and ArrayList

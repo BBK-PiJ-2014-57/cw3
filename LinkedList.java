@@ -1,4 +1,8 @@
-
+/**
+ * Class which implements the interface, List, using the LinkedList implementation
+ * @author lewispalmer
+ *
+ */
 public class LinkedList implements List {
 
 	private ListNode front;//Holder for the top of the list
