@@ -30,7 +30,6 @@ public class SampleableListImplTest {
 		return Arrays.asList(new Object[][] {
 				{new Object[]{1, 3, 5, 7, 9},new Object[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}},
 				{new Object[]{1, 3, 5, 7, 9},new Object[]{1, 2, 3, 4, 5, 6, 7, 8, 9}},
-				{new ArrayList(),null},
 				{new Object[]{1},new Object[]{1}}
 		}
 		);}
@@ -83,5 +82,12 @@ public class SampleableListImplTest {
 		InputToList();
 		SampleableList tocheck = new SampleableListImpl(this.sampleablelistinputdata);
 		assertThat(tocheck.sample(), new listMatcher(this.expectedList));
+	}
+	
+	@Test
+	public void testEmptyListSampl()
+	{
+		SampleableList tocheck = new SampleableListImpl();
+		assertThat(tocheck.sample(), new listMatcher(new ArrayList()));
 	}
 }

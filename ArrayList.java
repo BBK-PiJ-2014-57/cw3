@@ -17,7 +17,8 @@ public class ArrayList implements List {
 	 */
 	public ArrayList(Object[] eles)
 	{
-		if(eles.length !=0)
+		
+		if(eles.length !=0 || eles == null)
 		{
 			this.currsize = eles.length;
 			this.elements = new Object[this.currsize];
@@ -90,47 +91,10 @@ public class ArrayList implements List {
 		}
 		return size;
 	}
-	
-	/**
-	 * Function finds the appropriate Error message based on the operation and ArrayList
-	 * @param index the index that is trying to be accessed or added
-	 * @param adding whether the operation is adding to the list 
-	 * @param obj the Object to be added to the ArrayList
-	 * @param addtoend whether we are trying to add to the end of the 
-	 * @return the appropriate Error Message
-	 */
-	private ErrorMessage FindError(int index, boolean adding, Object obj, boolean addtoend)
-	{
-		if(this.isEmpty() && !adding)
-		{
-			return ErrorMessage.EMPTY_STRUCTURE;
-		}
-		if(index < 0 || (index >=this.size() && !addtoend))
-		{
-			return ErrorMessage.INDEX_OUT_OF_BOUNDS;
-		}
-		if(adding && obj == null)
-		{
-			return ErrorMessage.INVALID_ARGUMENT;
-		}
-		return ErrorMessage.NO_ERROR;
-	}
-	
-	/**
-	 * Overloading FindError for functions that aren't adding to the end of this list.
-	 * @param index the index that is trying to be accessed or added
-	 * @param adding whether this function is adding elements
-	 * @param obj the object to be added
-	 * @return appropriate ErrorMessage
-	 */
-	private ErrorMessage FindError(int index, boolean adding, Object obj)
-	{
-		return FindError(index, adding, obj, false);
-	}
 
 	@Override
 	public ReturnObject get(int index) {
-		ErrorMessage retmsg = FindError(index, false, null);
+		ErrorMessage retmsg = FindErrorUtility.FindError(index, false, null, this);
 		if(retmsg != ErrorMessage.NO_ERROR)
 		{
 			return new ReturnObjectImpl(retmsg, null);
@@ -140,7 +104,7 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject remove(int index) {
-		ErrorMessage retmsg = FindError(index, false, null);
+		ErrorMessage retmsg = FindErrorUtility.FindError(index, false, null, this);
 		if(retmsg != ErrorMessage.NO_ERROR)
 		{
 			return new ReturnObjectImpl(retmsg, null);
@@ -173,7 +137,7 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject add(int index, Object item) {
-		ErrorMessage retmsg = FindError(index, true, item);
+		ErrorMessage retmsg = FindErrorUtility.FindError(index, true, item, this);
 		if(retmsg != ErrorMessage.NO_ERROR)
 		{
 			return new ReturnObjectImpl(retmsg, item);
@@ -198,7 +162,7 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject add(Object item) {
-		ErrorMessage retmsg = FindError(this.size(), true, item, true);
+		ErrorMessage retmsg = FindErrorUtility.FindError(this.size(), true, item, true, this);
 		if(retmsg != ErrorMessage.NO_ERROR)
 			return new ReturnObjectImpl(retmsg, item);
 		//If there isn't space for the new item, get more space
