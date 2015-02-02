@@ -1,9 +1,10 @@
-import static org.junit.Assert.*;
-
 import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.Collection;
- 
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -54,4 +55,23 @@ public class ReturnObjectImplTest {
 		assertEquals(expectedObject, input.getReturnValue());
 	}
 
+	@Test
+	public void copyConstructorTestError(){
+		assertEquals(new ReturnObjectImpl((ReturnObjectImpl)input).hasError(), input.hasError());
+	}
+	
+	@Test
+	public void copyConstructorTestErrorMsg(){
+		assertEquals(new ReturnObjectImpl((ReturnObjectImpl)input).getError(), input.getError());
+	}
+	
+	@Test
+	public void copyConstructorTestRetObj(){
+		assertEquals(new ReturnObjectImpl((ReturnObjectImpl)input).getReturnValue(), input.getReturnValue());
+	}
+	
+	@Test
+	public void copyConstructorDiffObj(){
+		assertThat(new ReturnObjectImpl((ReturnObjectImpl)input), new returnObjectCopyTester((ReturnObjectImpl)input));
+	}
 }

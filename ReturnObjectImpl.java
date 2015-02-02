@@ -1,3 +1,4 @@
+
 /**
  * A class which implements the class ReturnObject.java.
  * @author lewispalmer
@@ -36,6 +37,16 @@ public class ReturnObjectImpl implements ReturnObject {
 		this.retObject = retObj;
 	}
 	
+	/**
+	 * Copy Constructor - hopefully satisfies for Functional list. Just creates a new instance of the class with same fields.
+	 * @param tocopy ReturnObject to be copied
+	 */
+	public ReturnObjectImpl(ReturnObjectImpl tocopy)
+	{
+		this.err = tocopy.err;
+		this.errMsg = tocopy.errMsg;
+		this.retObject = tocopy.retObject;
+	}
 	
 	@Override
 	public boolean hasError() {
